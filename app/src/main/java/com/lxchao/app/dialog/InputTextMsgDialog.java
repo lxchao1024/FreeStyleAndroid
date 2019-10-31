@@ -76,9 +76,9 @@ public class InputTextMsgDialog extends AppCompatDialog {
 
     private void init() {
         setContentView(R.layout.dialog_input_text_msg);
-        messageTextView = (EditText) findViewById(R.id.et_input_message);
-        tvNumber = (TextView) findViewById(R.id.tv_test);
-        final LinearLayout rldlgview = (LinearLayout) findViewById(R.id.rl_inputdlg_view);
+        messageTextView = findViewById(R.id.et_input_message);
+        tvNumber = findViewById(R.id.tv_test);
+        final LinearLayout rldlgview = findViewById(R.id.rl_inputdlg_view);
         messageTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -97,7 +97,7 @@ public class InputTextMsgDialog extends AppCompatDialog {
                     /*dot_hong颜色值：#E73111,text_bottom_comment颜色值：#9B9B9B*/
                     tvNumber.setTextColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
                 } else {
-                    tvNumber.setTextColor(mContext.getResources().getColor(android.R.color.white));
+                    tvNumber.setTextColor(mContext.getResources().getColor(android.R.color.darker_gray));
                 }
                 if (editable.length() == 0) {
                     confirmBtn.setBackgroundResource(R.drawable.btn_send_normal);
@@ -107,108 +107,88 @@ public class InputTextMsgDialog extends AppCompatDialog {
             }
         });
 
-        confirmBtn = (TextView) findViewById(R.id.confrim_btn);
+        confirmBtn = findViewById(R.id.confrim_btn);
         LinearLayout ll_tv = findViewById(R.id.ll_tv);
         imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        ll_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String msg = messageTextView.getText().toString().trim();
-                if (msg.length() > maxNumber) {
-                    Toast.makeText(mContext, "超过最大字数限制", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (!TextUtils.isEmpty(msg)) {
-                    mOnTextSendListener.onTextSend(msg);
-                    imm.showSoftInput(messageTextView, InputMethodManager.SHOW_FORCED);
-                    imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
-                    messageTextView.setText("");
-                    dismiss();
-                } else {
-                    Toast.makeText(mContext, "请输入文字", Toast.LENGTH_LONG).show();
-                }
-                messageTextView.setText(null);
+        ll_tv.setOnClickListener(view -> {
+            String msg = messageTextView.getText().toString().trim();
+            if (msg.length() > maxNumber) {
+                Toast.makeText(mContext, "超过最大字数限制", Toast.LENGTH_LONG).show();
+                return;
             }
+            if (!TextUtils.isEmpty(msg)) {
+                mOnTextSendListener.onTextSend(msg);
+                imm.showSoftInput(messageTextView, InputMethodManager.SHOW_FORCED);
+                imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
+                messageTextView.setText("");
+                dismiss();
+            } else {
+                Toast.makeText(mContext, "请输入文字", Toast.LENGTH_LONG).show();
+            }
+            messageTextView.setText(null);
         });
 
-        messageTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                switch (actionId) {
-                    case KeyEvent.KEYCODE_ENDCALL:
-                    case KeyEvent.KEYCODE_ENTER:
-                        if (messageTextView.getText().length() > maxNumber) {
-                            Toast.makeText(mContext, "超过最大字数限制", Toast.LENGTH_LONG).show();
-                            return true;
-                        }
-                        if (messageTextView.getText().length() > 0) {
-                            imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
-                            dismiss();
-                        } else {
-                            Toast.makeText(mContext, "请输入文字", Toast.LENGTH_LONG).show();
-                        }
+        messageTextView.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            switch (actionId) {
+                case KeyEvent.KEYCODE_ENDCALL:
+                case KeyEvent.KEYCODE_ENTER:
+                    if (messageTextView.getText().length() > maxNumber) {
+                        Toast.makeText(mContext, "超过最大字数限制", Toast.LENGTH_LONG).show();
                         return true;
-                    case KeyEvent.KEYCODE_BACK:
+                    }
+                    if (messageTextView.getText().length() > 0) {
+                        imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
                         dismiss();
-                        return false;
-                    default:
-                        return false;
-                }
+                    } else {
+                        Toast.makeText(mContext, "请输入文字", Toast.LENGTH_LONG).show();
+                    }
+                    return true;
+                case KeyEvent.KEYCODE_BACK:
+                    dismiss();
+                    return false;
+                default:
+                    return false;
             }
         });
 
-        messageTextView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                Log.d("My test", "onKey " + keyEvent.getCharacters());
-                return false;
-            }
+        messageTextView.setOnKeyListener((view, i, keyEvent) -> {
+            Log.d("My test", "onKey " + keyEvent.getCharacters());
+            return false;
         });
 
         rlDlg = findViewById(R.id.rl_outside_view);
-        rlDlg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getId() != R.id.rl_inputdlg_view) {
-                    dismiss();
-                }
-            }
-        });
-
-        rldlgview.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
-                Rect r = new Rect();
-                //获取当前界面可视部分
-                getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
-                //获取屏幕的高度
-                int screenHeight = getWindow().getDecorView().getRootView().getHeight();
-                //此处就是用来获取键盘的高度的， 在键盘没有弹出的时候 此高度为0 键盘弹出的时候为一个正数
-                int heightDifference = screenHeight - r.bottom;
-
-                if (heightDifference <= 0 && mLastDiff > 0) {
-                    dismiss();
-                }
-                mLastDiff = heightDifference;
-            }
-        });
-        rldlgview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
+        rlDlg.setOnClickListener(v -> {
+            if (v.getId() != R.id.rl_inputdlg_view) {
                 dismiss();
             }
         });
 
-        setOnKeyListener(new OnKeyListener() {
-            @Override
-            public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent keyEvent) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getRepeatCount() == 0) {
-                    dismiss();
-                }
-                return false;
+        rldlgview.addOnLayoutChangeListener((view, i, i1, i2, i3, i4, i5, i6, i7) -> {
+            Rect r = new Rect();
+            //获取当前界面可视部分
+            getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
+            //获取屏幕的高度
+            int screenHeight = getWindow().getDecorView().getRootView().getHeight();
+            //此处就是用来获取键盘的高度的， 在键盘没有弹出的时候 此高度为0 键盘弹出的时候为一个正数
+            int heightDifference = screenHeight - r.bottom;
+
+            if (heightDifference <= 0 && mLastDiff > 0) {
+                dismiss();
             }
+            mLastDiff = heightDifference;
+        });
+
+        rldlgview.setOnClickListener(view -> {
+            imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
+            dismiss();
+        });
+
+        setOnKeyListener((dialogInterface, keyCode, keyEvent) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getRepeatCount() == 0) {
+                dismiss();
+            }
+            return false;
         });
     }
 
