@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <title>greet</title>
+    <style>
+		html,body {
+    		margin: 0;
+			background-color: rgba(255, 255, 255, 0);
+    	}
+		html,body *{
+    		box-sizing: border-box;
+    	}
+		.gift{
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			width: 6.95rem;
+			height: 7.06rem;
+			margin-top: -4rem;
+			margin-left: -3.4rem;
+			background-image: url(./img/static/gift_background.png);
+			background-repeat: no-repeat;
+			background-size: 100%;
+			padding-right: 0.2rem;
+		}
+		.gift .slogan{
+			width: 100%;
+			line-height: 0.6rem;
+			font-size: 0.4rem;
+			color: #FFFFFF;
+			padding: 0.76rem 0.32rem;
+			text-align: center;
+
+		}
+		.gift .content{
+			width: 100%;
+		}
+		.gift .content .list{
+
+			width: 100%;
+			padding: 0;
+			margin:0.1rem 0 0;
+			list-style-type: none;
+			padding: 0 1rem;
+
+
+		}
+		.gift .content .list li{
+			width: 50%;
+			height: 0.62rem;
+			float: left;
+			text-align: center;
+			margin: 0.06rem 0;
+			font-size: 0.32rem;
+			color: #5838B9;
+			overflow: hidden;
+			text-align: left;
+    		line-height: 0.62rem;
+    		padding-left: 0.6rem;
+		}
+		.gift .content .list li img{
+			height: 0.6rem;
+			margin-right: 0.04rem;
+			vertical-align: middle;
+		}
+		.gift .content .button{
+			width: 3.1rem;
+			height: 0.92rem;
+			margin: 0.15rem auto ;
+			border-radius: 0.92rem;
+			background: -webkit-linear-gradient(left, #FF2A68, #FA33E8); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(right, #FF2A68, #FA33E8); /* Opera 11.1 - 12.0 */
+			background: -moz-linear-gradient(right, #FF2A68, #FA33E8); /* Firefox 3.6 - 15 */
+			background: linear-gradient(to right, #FF2A68, #FA33E8); /* 标准的语法 */
+
+			text-align: center;
+			line-height: 0.92rem;
+			color: #fff;
+			font-size: 0.36rem;
+		}
+		.clearfix:after {
+			content: " ";
+			display: block;
+			clear: both;
+			height: 0;
+		}
+
+		.clearfix {
+			zoom: 1;
+		}
+	</style>
+    <script src="https://h.19gofun.com/jf/i/hybrid/./js/rem-1795857c.js"></script>
+    <script>
+        function closeGift() {
+            listener.closeGift();
+            alert("sss");
+            console.log("sss");
+        }
+    </script>
+</head>
+<body>
+<div class="gift">
+    <div class="slogan">
+        Congratulations on winning the
+        first recharge gift bag !
+    </div>
+    <div class="content clearfix">
+        <ul class="list clearfix">
+            <li>
+                <!-- 经验 -->
+                <img src="https://h.19gofun.com/jf/i/hybrid/./img/static/exp.png" alt="">
+                x 50
+            </li>
+            <li>
+                <!-- 钻石 -->
+                <img src="https://h.19gofun.com/jf/i/hybrid/./img/static/zuanshi.png" alt="">
+                x 10
+            </li>
+            <li>
+                <!-- 一箭穿心 -->
+                <img src="https://h.19gofun.com/jf/i/hybrid/./img/static/yijianchuanxin.png" alt="">
+                x 3
+            </li>
+            <li>
+                <!-- 荧光牌 -->
+                <img src="https://h.19gofun.com/jf/i/hybrid/./img/static/yingguangping.png" alt="">
+                x 5
+            </li>
+            <li>
+                <!-- 么么哒 -->
+                <img src="https://h.19gofun.com/jf/i/hybrid/./img/static/momoda.png" alt="">
+                x 5
+            </li>
+        </ul>
+        <div class="button" onclick="closeGift()" id="l_t1"></div>
+    </div>
+</div>
+<script src="https://h.19gofun.com/jf/i/hybrid/./libs/jquery/jquery-2e77fa7a.js"></script>
+<script src="https://h.19gofun.com/jf/i/hybrid/./js/gift-eed5b263.js"></script>
+</body>
+</html>
