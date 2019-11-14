@@ -7,10 +7,133 @@
     tools:context=".ui.activity.GridActivity">
 
     <GridView
-        android:columnWidth="90dp"
-        android:numColumns="4"
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:numColumns="4" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/grid_view">
+        <!--  要求：图片宽度占整个布局30%，宽高比16:9  -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/iv_course"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_course_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="六年级单元过关检测六年级单元过关检测"
+            android:textColor="#333333"
+            app:layout_constraintLeft_toRightOf="@+id/iv_course"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_course" />
+
+        <TextView
+            android:id="@+id/tv_signature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="签名"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_course_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_course_name" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="内容内容内容内容内容内容内容内容内容"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_course_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signature" />
+
+        <TextView
+            android:id="@+id/tv_current_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="¥ 480"
+            android:textColor="#f6454a"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:maxLines="1"
+            android:text="¥ 1480"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_current_price"
+            app:layout_constraintLeft_toRightOf="@+id/tv_current_price" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="match_parent"
+            android:id="@+id/barrier"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="tv_current_price"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#d8d8d8"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+
+        <!--  要求：在之前基础上，底部加一根横线用于分隔，要求线与上面最近的控件距离是15dp  -->
+        <!--    <android.support.constraint.Barrier-->
+        <!--        android:id="@+id/barrier"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        app:barrierDirection="bottom"-->
+        <!--        app:constraint_referenced_ids="iv_course, tv_origin_price" />-->
+
+        <!--    <View-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="1px"-->
+        <!--        android:background="#d8d8d8"-->
+        <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--        app:layout_constraintRight_toRightOf="parent"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/barrier" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

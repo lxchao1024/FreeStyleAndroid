@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fefdff"
+    android:padding="14dp">
+
+    <Button
+        android:id="@+id/excel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="excel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/grid"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/grid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Grid"
+        app:layout_constraintBottom_toBottomOf="@+id/excel"
+        app:layout_constraintLeft_toRightOf="@+id/excel"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/mainA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="MainA"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/excel"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/main3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Main3"
+        app:layout_constraintLeft_toRightOf="@+id/mainA"
+        app:layout_constraintTop_toBottomOf="@+id/excel"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/main4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Main4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainA"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/main5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Main5"
+        app:layout_constraintLeft_toRightOf="@+id/main4"
+        app:layout_constraintTop_toBottomOf="@+id/main3"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/gridRecy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="GridRecyclerview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

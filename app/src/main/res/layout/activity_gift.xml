@@ -18,4 +18,17 @@
         android:id="@+id/appBarLayout"
         android:layout_height="wrap_content" />
 
+    <com.lxchao.app.widgets.UserTextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="40sp"
+        android:text="&#xe664;" />
+
+    <com.lxchao.app.widgets.User
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="40sp"
+        android:textColor="#ff0000"
+        android:text="@string/test" />
+
 </LinearLayout>

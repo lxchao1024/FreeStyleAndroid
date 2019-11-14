@@ -4,6 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.Main4Activity">
+    android:clipToPadding="false"
+    android:paddingLeft="12.5dp"
+    android:paddingTop="7.5dp"
+    android:paddingRight="12.5dp"
+    android:paddingBottom="7.5dp">
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_parent_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="coding"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_icon"
+        app:layout_constraintLeft_toRightOf="@+id/img_icon"
+        app:layout_constraintTop_toTopOf="@+id/img_icon" />
+
+    <Button
+        android:id="@+id/btn_one"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="A"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_two"
+        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
+
+    <Button
+        android:id="@+id/btn_two"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="B"
+        app:layout_constraintLeft_toRightOf="@+id/btn_one"
+        app:layout_constraintRight_toLeftOf="@+id/btn_three"
+        app:layout_constraintTop_toTopOf="@id/btn_one" />
+
+    <Button
+        android:id="@+id/btn_three"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="c"
+        app:layout_constraintLeft_toRightOf="@+id/btn_two"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_two" />
+
+    <Button
+        android:id="@+id/btn_four"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="D"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_five"
+        app:layout_constraintTop_toBottomOf="@+id/btn_one" />
+
+    <Button
+        android:id="@+id/btn_five"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="E"
+        app:layout_constraintLeft_toRightOf="@+id/btn_four"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_four" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
