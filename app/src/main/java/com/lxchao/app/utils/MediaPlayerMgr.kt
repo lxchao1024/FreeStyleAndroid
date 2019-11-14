@@ -5,14 +5,17 @@ import android.media.MediaPlayer
 import android.view.Surface
 
 /**
- *
  * @author lixiangchao
- * @date 2019/11/14
  * @version 1.0.0
+ * @date 2019/11/14
  */
-object MediaPlayerManager {
-
+class MediaPlayerMgr private constructor() {
+    //构造方法私有
     private var mPlayer: MediaPlayer? = null
+
+    companion object {
+        val instance = MediaPlayerMgr()
+    }
 
     /**
      * 播放网络或本地中的Media资源
@@ -21,19 +24,19 @@ object MediaPlayerManager {
         try {
             if (mPlayer == null) {
                 mPlayer = MediaPlayer()
-                mPlayer?.setDataSource(mediaPath)
+                mPlayer!!.setDataSource(mediaPath)
             } else {
                 if (mPlayer!!.isPlaying) {
-                    mPlayer?.stop()
+                    mPlayer!!.stop()
                 }
-                mPlayer?.reset()
-                mPlayer?.setDataSource(mediaPath)
+                mPlayer!!.reset()
+                mPlayer!!.setDataSource(mediaPath)
             }
             mPlayer!!.setSurface(surface)
             mPlayer!!.setVolume(0.5f, 0.5f)
-            mPlayer!!.setLooping(true)
+            mPlayer!!.isLooping = true
             mPlayer!!.prepare()
-            mPlayer!!.setOnPreparedListener{ mediaPlayer -> mediaPlayer.start() }
+            mPlayer!!.setOnPreparedListener { mediaPlayer -> mediaPlayer.start() }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -49,7 +52,7 @@ object MediaPlayerManager {
                 mPlayer = MediaPlayer()
                 mPlayer!!.setDataSource(fileDescriptor.fileDescriptor, fileDescriptor.startOffset, fileDescriptor.declaredLength)
             } else {
-                if (mPlayer!!.isPlaying()) {
+                if (mPlayer!!.isPlaying) {
                     mPlayer!!.stop()
                 }
                 mPlayer!!.reset()
@@ -57,9 +60,9 @@ object MediaPlayerManager {
             }
             mPlayer!!.setSurface(surface)
             mPlayer!!.setVolume(0.5f, 0.5f)
-            mPlayer!!.setLooping(true)
+            mPlayer!!.isLooping = true
             mPlayer!!.prepareAsync()
-            mPlayer!!.setOnPreparedListener{ mediaPlayer -> mediaPlayer.start() }
+            mPlayer!!.setOnPreparedListener { mediaPlayer -> mediaPlayer.start() }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -71,11 +74,13 @@ object MediaPlayerManager {
      */
     fun stopMedia() {
         try {
-            mPlayer?.let {
-                it.isPlaying?:it.stop()
-                it.release()
+            if (mPlayer != null) {
+                if (mPlayer!!.isPlaying) {
+                    mPlayer!!.stop()
+                }
+                mPlayer!!.release()
+                mPlayer = null
             }
-            mPlayer = null
         } catch (e: Exception) {
             e.printStackTrace()
         }

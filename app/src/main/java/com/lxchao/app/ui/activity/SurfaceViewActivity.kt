@@ -1,12 +1,10 @@
 package com.lxchao.app.ui.activity
 
 import android.graphics.SurfaceTexture
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
-import com.lxchao.app.R
-import com.lxchao.app.utils.MediaPlayerManager
+import com.lxchao.app.utils.MediaPlayerMgr
 
 class SurfaceViewActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
     override fun onSurfaceTextureSizeChanged(p0: SurfaceTexture?, p1: Int, p2: Int) {
@@ -16,13 +14,13 @@ class SurfaceViewActivity : AppCompatActivity(), TextureView.SurfaceTextureListe
     }
 
     override fun onSurfaceTextureDestroyed(p0: SurfaceTexture?): Boolean {
-        MediaPlayerManager.stopMedia()
+        MediaPlayerMgr.instance.stopMedia()
         return true
     }
 
     override fun onSurfaceTextureAvailable(p0: SurfaceTexture?, p1: Int, p2: Int) {
         val path = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-        MediaPlayerManager.playUrlMedia(Surface(p0), path)
+        MediaPlayerMgr.instance.playUrlMedia(Surface(p0), path)
     }
 
 
