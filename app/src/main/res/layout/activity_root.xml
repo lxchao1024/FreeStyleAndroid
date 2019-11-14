@@ -68,11 +68,22 @@
 
     <Button
         android:id="@+id/gridRecy"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.5"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="GridRecyclerview"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main4" />
+
+    <Button
+        android:id="@+id/textureView"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.5"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="SurfaceViewActivity"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/gridRecy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

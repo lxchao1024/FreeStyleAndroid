@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activity.SurfaceViewActivity" android:screenOrientation="landscape" />
         <activity android:name=".ui.activity.GiftActivity" />
         <activity android:name=".ui.activity.GridActivity" />
         <activity android:name=".ui.activity.MainActivity" />
@@ -21,7 +22,6 @@
         <activity android:name=".ui.activity.Main3Activity" />
         <activity android:name=".ui.activity.Main4Activity" />
         <activity android:name=".ui.activity.SpringBackActivity" />
-
         <activity android:name=".ui.activity.RootActivity" />
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>

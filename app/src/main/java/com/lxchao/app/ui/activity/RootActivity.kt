@@ -19,5 +19,7 @@ class RootActivity : AppCompatActivity() {
         main4.setOnClickListener{ startActivity(Intent(baseContext, Main4Activity::class.java)) }
         main5.setOnClickListener{ startActivity(Intent(baseContext, Main5Activity::class.java)) }
         gridRecy.setOnClickListener{ startActivity(Intent(baseContext, GridRecyclerViewActivity::class.java)) }
+        textureView.setOnClickListener{ startActivity(Intent(baseContext, SurfaceViewActivity
+        ::class.java)) }
     }
 }
