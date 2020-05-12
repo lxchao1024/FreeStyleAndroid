@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.lxchao.app.R;
-import com.lxchao.app.utils.excel.ReadExcelPoi;
 
 /**
  * 权限请求+Excel解析
@@ -30,13 +29,13 @@ public class GiftActivity extends AppCompatActivity {
 
     private void initExcel() {
         try {
-            ReadExcelPoi.copy(this, "hell.xlsx", getExternalCacheDir().getPath() + "/hell.xlsx");
+//            ReadExcelPoi.copy(this, "hell.xlsx", getExternalCacheDir().getPath() + "/hell.xlsx");
             Thread.sleep(1400);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        ReadExcelPoi.readXLSX(getExternalCacheDir().getPath() + "/hell.xlsx");
+//        ReadExcelPoi.readXLSX(getExternalCacheDir().getPath() + "/hell.xlsx");
 
 //        ReadExcelPoi readExcelPoi = new ReadExcelPoi(getExternalCacheDir().getPath() + "/hell.xlsx", (isTrue, listsContent) -> {
 //            Log.e("sss", "content === " + listsContent.toString());

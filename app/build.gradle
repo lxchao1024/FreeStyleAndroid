@@ -25,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     dynamicFeatures = [":dynamicfeature"]
+
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     packagingOptions {
@@ -67,10 +69,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     debugApi project(path: ':mylibrary')
     releaseApi project(path: ':mylibrary')
-    implementation files('libs/poi-3.9-20121203.jar')
-    implementation files('libs/poi-ooxml-3.8-20120326.jar')
-    implementation files('libs/poi-scratchpad-3.9-20121203.jar')
-    implementation files('libs/jxl.jar')
 }
 repositories {
     mavenCentral()

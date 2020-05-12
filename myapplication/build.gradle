@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
@@ -41,7 +41,7 @@ dependencies {
 
     implementation 'com.android.support:design:27.1.0'
     implementation "com.android.support:recyclerview-v7:27.1.0"
-    compile "androidx.core:core-ktx:+"
+    api "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {

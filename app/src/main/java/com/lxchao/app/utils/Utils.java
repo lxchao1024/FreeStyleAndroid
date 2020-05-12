@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
@@ -48,6 +49,60 @@ import java.util.regex.Pattern;
  * @date {2019/8/19}
  */
 public class Utils {
+
+    private static final String TAG = Utils.class.getSimpleName();
+    private static final int BYTE_BUF_SIZE = 2048;
+
+    /**
+     * Copies a file from assets.
+     *
+     * @param context application context used to discover assets.
+     * @param assetName the relative file name within assets.
+     * @param targetName the target file name, always over write the existing file.
+     * @throws IOException if operation fails.
+     */
+    public static void copy(Context context, String assetName, String targetName) throws IOException {
+
+        Log.d(TAG, "creating file " + targetName + " from " + assetName);
+
+        File targetFile = null;
+        InputStream inputStream = null;
+        FileOutputStream outputStream = null;
+
+        try {
+            AssetManager assets = context.getAssets();
+            targetFile = new File(targetName);
+            if(!targetFile.getParentFile().exists()){
+                targetFile.getParentFile().mkdirs();
+            }
+            if(!targetFile.exists()){
+                targetFile.createNewFile();
+            }
+            inputStream = assets.open(assetName);
+            // TODO(kanlig): refactor log messages to make them more useful.
+            Log.d(TAG, "Creating outputstream");
+            outputStream = new FileOutputStream(targetFile, false);
+            copy(inputStream, outputStream);
+        } finally {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+    }
+
+    private static void copy(InputStream from, OutputStream to) throws IOException {
+        byte[] buf = new byte[BYTE_BUF_SIZE];
+        while (true) {
+            int r = from.read(buf);
+            if (r == -1) {
+                break;
+            }
+            to.write(buf, 0, r);
+        }
+    }
 
     /**
      * 输入框长度过滤器

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:text="Hello World!"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/digit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/digitSingle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFF"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit Single"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digit" />
+
+
+    <TextView
+        android:id="@+id/digitChecked"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:visibility="gone"
+        android:background="#FFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit Checked"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitSingle" />
+
+
+    <TextView
+        android:id="@+id/digitOpinion"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_marginTop="1dp"
+        android:background="#FFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit Opinion"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitChecked" />
+
+
+    <TextView
+        android:id="@+id/digitBlank"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="#FFF"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit Blank"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitOpinion" />
+
+
+    <TextView
+        android:id="@+id/digitQa"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:visibility="gone"
+        android:background="#FFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="Digit QA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitBlank" />
+
+    <com.moxun.tagcloudlib.view.TagCloudView
+        android:id="@+id/tagView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:autoScrollMode="uniform"
+        app:darkColor="@color/tagDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lightColor="@color/tagLight"
+        app:radiusPercent="0.6"
+        app:scrollSpeed="3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
